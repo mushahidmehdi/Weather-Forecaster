@@ -1,0 +1,16 @@
+.tooltip {
+	border-radius: 0.23em;
+	background-color: #5454549a;
+	color: #fff;
+	padding: 1.5rem;
+	box-shadow: 15px 30px 40px 5px rgba(0, 0, 0, 0.5);
+	text-align: center;
+	> h4 {
+		color: #FFFFFF;
+		line-height: 18px;
+	}
+	> p {
+		color: #FFFFFF;
+		line-height: 20px;
+	}
+}
