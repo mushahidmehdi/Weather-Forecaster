@@ -1,32 +1,51 @@
 import React, { useState } from 'react'
 import SearchIcon from '@material-ui/icons/Search';
-import { Chart } from '.';
+import { Chart, Animation } from '.';
+import { fetchData } from '../state/actions/api'
+import { useDispatch, useSelector } from 'react-redux';
 
-
-const Cart = ({ data: { city_name, data,} }) => {
+const Cart = () => {
 	const [cityName, setCityName] = useState('');
-	if (!city_name){
-		return 'Loading.....!'
-	} 
+	const dispatch = useDispatch();
+	const { data } = useSelector(state => state.data)
+	console.log(data)
+	const handleSubmit = e => {
+		e.preventDefault();
+		dispatch(fetchData(cityName));
+		setCityName('');
+	}
 
 	return (
 		<>
 		<div className="display">
 			<div className="display__input">
-				<input type="text" name="searchcity" value={cityName} placeholder = 'Search City' onChange={e => setCityName(e.target.value)}/>
+				<form onSubmit={handleSubmit}>
+				<input
+				type="text"
+				name="searchcity" 
+				value={cityName}
+				placeholder='Search City'
+				onChange={e => setCityName(e.target.value)}/>
 				<SearchIcon className="display__input__icon" />
+				</form>
 			</div>
 			<div className="display__data">
-				<div className="display__data__chart">
-					<h3>Average Hight and Low Temperatures of {city_name}</h3>
-					< Chart props={data}/>
-				</div>
-				<div className="display__data__cart">
-					
-				</div>
+				{ data && data !== null && data.length !== 0 ? < Chart props={data}/> : ( 
+					(data === null) ?
+					<div className="display__data__default">
+					<h1>No city is selected!</h1>
+					<p>Type any city name to get weekly forecast data</p>
+						<Animation/> 
+					</div> : 
+					<div className="display__data__default">
+					<h2>City doesn’t exist!</h2>
+					<p>Type a valid city name to get weekly forecast data</p>
+						<Animation/> 
+					</div>
+					)
+				 }
 			</div>
 		</div>
-			
 		</>
 	)
 }

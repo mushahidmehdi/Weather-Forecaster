@@ -7,8 +7,8 @@ const URL = `https://api.weatherbit.io/v2.0/forecast/daily?city=${'Raleigh,NC'},
 export const fetchData = async () => {
 	try {
 
-		const { data: {city_name, data, valid_date, temp } }  = await axios(URL)
-		return { city_name, data, valid_date, temp}
+		const { data: {city_name, data } }  = await axios(URL)
+		return { city_name, data, }
 		
 	} catch (error){
 		console.error(error)

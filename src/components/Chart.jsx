@@ -1,64 +1,97 @@
 import { format, parseISO } from 'date-fns';
-import React from 'react';
+import Loader from "react-loader-spinner";
+
+import FilterDramaOutlinedIcon from '@material-ui/icons/FilterDramaOutlined';
+import moment from 'moment';
+import React, { useState } from 'react';
 import { 
-	ResponsiveContainer,
-	Line,
-	Legend,
-	CartesianGrid,
-	XAxis,
-	YAxis,
-	Tooltip, 
-	LineChart,
+		ResponsiveContainer,
+		Line,
+		Legend,
+		CartesianGrid,
+		XAxis,
+		YAxis,
+		Tooltip, 
+		LineChart,
 	} from 'recharts';
 
-	var avg_temp
+	
+const Chart = ( { props: { data, city_name} } ) => {
+	const [avgTemp, setAvgTemp] = useState();
+	const [cartdate, setCartdate] = useState();
+	const [weatherDescription, setWeatherDescription] = useState('');
 
-const Chart = ( { props } ) => {
+	if (!data){
+		return( <Loader type="Circles" color="#545454" height={80} width={80}/>)
+	} 
+	const passingDatatoCard = e =>{
+		if (e) {
+			setAvgTemp((e.activePayload[0].payload.max_temp + e.activePayload[0].payload.min_temp / 2).toFixed(0))
+			setCartdate(new Date(e.activePayload[0].payload.valid_date))
+			setWeatherDescription(e.activePayload[0].payload.weather.description)
+		}	
+	}
+	const newDate = moment(cartdate).format("MMM Do ")
 	return (
-		<div>
-			<ResponsiveContainer width='100%' height={350}>
-				<LineChart data={ props } onClick={e => e.props}>
-					{/* 
-					<defs>
-					<linearGradient id='faddingGradientred' x1='0' y1='0' x2='0' y2='1'>
-					<stop offset='0%' stopColor='#e25822' stopOpacity={0.4}/>
-					<stop offset='75%' stopColor='#77B6EA' stopOpacity={0.05}/>
-					</linearGradient>
+		<>
+		<div className="chart">
+			<div className='chart__linechart'>
+				<h3>Average Hight and Low Temprature of {city_name}</h3>
+				<ResponsiveContainer width='100%' height={350}>
+					<LineChart data={ data } onClick={passingDatatoCard}>
+						{/*Area Gradient for area Chart */}
 
-					<linearGradient id='faddingGradientblue' x1='0' y1='0' x2='0' y2='1'>
-					<stop offset='0%' stopColor='#77B6EA' stopOpacity={0.4}/>
-					<stop offset='75%' stopColor='#77B6EA' stopOpacity={0.05}/>
-					</linearGradient>
-					</defs>
-					 */}
+						{/* 
+						<defs>
+						<linearGradient id='faddingGradientred' x1='0' y1='0' x2='0' y2='1'>
+						<stop offset='0%' stopColor='#e25822' stopOpacity={0.4}/>
+						<stop offset='75%' stopColor='#77B6EA' stopOpacity={0.05}/>
+						</linearGradient>
 
-					<Line dataKey='min_temp' stroke='#77B6EA' strokeWidth={2.5} strokeOpacity={0.8}
-					/>
+						<linearGradient id='faddingGradientblue' x1='0' y1='0' x2='0' y2='1'>
+						<stop offset='0%' stopColor='#77B6EA' stopOpacity={0.4}/>
+						<stop offset='75%' stopColor='#77B6EA' stopOpacity={0.05}/>
+						</linearGradient>
+						</defs>
+						*/}
 
-					<Line dataKey='max_temp' stroke='#e25822' strokeWidth={2.4}
-					strokeOpacity={0.8}
-					/>
+						<Line dataKey='min_temp' stroke='#77B6EA' strokeWidth={2.5} strokeOpacity={0.8}  />
 
-					< XAxis dataKey='valid_date' axisLine={false} fontSize={12}
-					/>
+						<Line dataKey='max_temp' stroke='#e25822' strokeWidth={2.4}
+						strokeOpacity={0.8} 
+						/>
 
-					< YAxis dataKey='temp' tickLine={false} domain={[-7, 25]}   interval={1} axisLine={false}  tickCount={12} fontSize={14}
-					/>
+						< XAxis dataKey='valid_date' axisLine={false} fontSize={12}
+						/>
 
-					<Legend layout="horizontal" verticalAlign="top" align="right"/>
+						< YAxis dataKey='temp' tickLine={false} domain={[-7, 25]}   interval={1} axisLine={false}  tickCount={12} fontSize={14}
+						/>
 
-					<Tooltip content={<CustomTooltip />}/>
+						<Legend layout="horizontal" verticalAlign="top" align="right"/>
 
-					<CartesianGrid opacity={0.8} vertical={false} strokeDasharray="3 3"/>
-				</LineChart>
-			</ResponsiveContainer>	
-		</div>	
+						<Tooltip content={<CustomTooltip />}/>
+
+						<CartesianGrid opacity={0.8} vertical={false} strokeDasharray="3 3"/>
+					</LineChart>
+				</ResponsiveContainer>	
+			</div>
+			<div className='chart__cart'>
+				<h1>{avgTemp}°C</h1>
+				<h2>{city_name}</h2>
+				<p>{newDate}</p>
+				<div className="chart__cart__description">
+				<FilterDramaOutlinedIcon />
+				<p>{weatherDescription} </p>
+				</div>
+			</div>	
+		</div>
+	</>
 	)
 }
 
-function CustomTooltip({ active, payload, label}) {
+const CustomTooltip = ({ active, payload, label}) => {
 	if (active) {
-		avg_temp = (( payload[0].payload.max_temp +  payload[0].payload.min_temp)/2).toFixed(2) 
+		const avg_temp = (( payload[0].payload.max_temp +  payload[0].payload.min_temp)/2).toFixed(2) 
 		return (
 		<div className='tooltip'>
 			<h4>{format(parseISO(label), "eeee d MMM, yyyy")}</h4>

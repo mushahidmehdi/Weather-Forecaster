@@ -1,13 +1,37 @@
+@import '../mixins';
+
 .navbar {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
 	background: #545454;
-	font-size: 32px;
 	font-weight: bold;
 	color: white;
 	height: 80px;
 	font-family: $Arimo;
+	@include big-desktop {
+		font-size: 32px;
+		width: 100%;
 
+	}
+	@include desktop {
+		font-size: 32px;
+		width: 100%;
+
+	}
+	@include tablet {
+		width: 100%;
+		font-size: 28px;
+	}
+	@include phone {
+		width: 100%;
+		font-size: 26px;
+		height: 30px;
+	}
+	@include small-phone {
+		width: 100%;
+		font-size: 26px;
+		height: 30px;
+	}
 }
