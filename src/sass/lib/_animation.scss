@@ -18,9 +18,10 @@
 	// left: 50%;
 	// transform: translate(-50%, -50%);
 	@include mix.respond(phones) {
-		margin: auto;
+		width: 500px;	
+	}
+	@include mix.respond(laptops) {
 		width: 100%;	
-
 	}
   }
   
@@ -29,11 +30,13 @@
 	width: 100px;
 	height: auto;
 	@include mix.respond(phones) {
-		width: 60px;
+		width: 75px;
 		margin: 2px 2px;
-
 	}
-
+	@include mix.respond(laptops) {
+		width: 90px;
+		margin: 2px 2px;
+	}
   }
   
 .sunny-body path {

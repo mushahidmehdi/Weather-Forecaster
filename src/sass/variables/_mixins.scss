@@ -24,15 +24,15 @@
 	// 	@media only screen and (max-width: 22.5em) { @content; };
 	// }
 		
-	@if $breakpoint == phones {
-	// 375×667 (3.75%)
-		@media only screen and (max-width: 23.4375em) { @content; };
-	}
-
-	// @else if $breakpoint == tablets {
-	// // 414 ×896 (4.58%)
-	// 	@media only screen and (max-width: 25.875em) { @content; };
+	// @if $breakpoint == phones {
+	// // 375×667 (3.75%)
+	// 	@media only screen and (max-width: 23.4375em) { @content; };
 	// }
+
+	@if $breakpoint == phones {
+	// 425 ×896 (4.58%)
+		@media only screen and (max-width: 31.5625em) { @content; };
+	}
 
 	@else if $breakpoint == laptops {
 	// 1366 × 768 (8.44%)
