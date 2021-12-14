@@ -1,3 +1,6 @@
+@use '../variables'as var;
+
+
 .display {
 	display: flex;
 	flex-direction: column;
@@ -12,11 +15,12 @@
 		margin-top: 57px;
 		height: 60px;
 		width: 500px;
+		max-width: 100%;
 		border-radius: 9999px;
 		padding: 13px ;
 		border-radius: 9999px;
 		box-shadow: 0px 2px 10px 2px #00000040;
-		border-radius: 9999;
+
 		> form {
 			display: flex;
 			justify-content: space-evenly;
@@ -27,7 +31,6 @@
 				border-style: none;
 				height: 34px;
 				border-style: none;
-				font-family: $Arimo;
 				font-size: 22px;
 				height: 34px;
 				border: none;
@@ -37,10 +40,12 @@
 		::placeholder {
 			color: rgba(84, 84, 84, 0.5);
 		  }
+
 		&__icon {
 			color: #77B6EA;
 			transform: scale(1.5);
 		}
+		
 	}
 
 	&__data {
@@ -53,7 +58,6 @@
 			color: #545454;
 			display: flex;
 			align-items: center;
-			font-family: $Arimo;
 			flex-direction: column;
 			justify-content: center;
 			padding: 10px;
@@ -68,7 +72,6 @@
 				line-height: 29px;
 				margin-bottom: 770px;
 				padding-bottom: 90px;
-
 			}
 			
 			> h2 {
@@ -78,4 +81,78 @@
 			}
 		}
 	}
+
+	@include var.respond(phones) {
+		&__input {
+			width: 320px;
+			max-width: 100%;
+			background-color: var.$lightest-navy;
+			margin-top: 2px 0px;
+			height: 28px;
+			display: flex;
+			
+
+			::placeholder {
+				color:  var.$slate;
+				font-size: 14px;
+			  }
+			
+			form {
+				background-color: var.$lightest-navy;
+				input {
+					color: var.$lightest-slate;
+					background-color: var.$lightest-navy;
+					height: 28px;
+					
+				}
+			}
+	
+			&__icon {
+				justify-content: center;
+				color: var.$slate;
+				transform: scale(1.2);
+			}
+		}
+
+		&__data {
+			width: 290px;
+			max-width: 100%;
+			margin: 0px auto;
+			&__default {
+				width: 300px;
+				max-width: 100%;
+				margin: 0px 0px;
+				h1 {
+					margin:auto;
+					color: var.$lightest-slate;
+					font-size: 26px;
+				}
+				p {
+					text-align: center;
+					font-size: 12px;
+					align-items: center ;
+					line-height: 18px;
+					color: var.$slate;
+				}
+			}
+			&__not_exits {
+				h2 {
+					color: var.$warning;
+					margin: 10px auto;
+					font-size: 26px;
+					
+				}
+				p {
+					text-align: center;
+					font-size: 12px;
+					align-items: center ;
+					line-height: 18px;
+					color: var.$slate;
+				}
+				
+			}
+			
+		}
+	}
 }
+

@@ -1,148 +1,163 @@
+@use '../variables/variables' as *;
+@use '../variables/mixins' as mix;
 
-  .credit {
-	
+.credit {
 	position: absolute;
 	width: 100%;
 	text-align: center;
 	bottom: 0;
-	margin: 0 0 10px 0;
+	max-width: 100%; 
+	width: 300px;
   }
   
-  .div-icons {
-	position: absolute;
+.div-icons {
+	// position: relative;
 	display: block;
 	width: 620px;
-	text-align: center;
-	top: 55%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	// top: 55%;
+	// left: 50%;
+	// transform: translate(-50%, -50%);
+	@include mix.respond(phones) {
+		margin: auto;
+		width: 100%;	
+
+	}
   }
   
-  .icon {
+.icon {
 	margin: 15px 25px;
 	width: 100px;
-	height: 100px;
+	height: auto;
+	@include mix.respond(phones) {
+		width: 60px;
+		margin: 2px 2px;
+
+	}
+
   }
   
-  .sunny-body path {
+.sunny-body path {
 	fill: $color-sun;
   }
   
-  .sunny-long-ray {
+.sunny-long-ray {
 	transform-origin: 50% 50%;
 	animation: spin 9s linear infinite;
   }
   
-  .sunny-long-ray path {
+.sunny-long-ray path {
 	fill: $color-sun;
   }
   
-  .sunny-short-ray {
+.sunny-short-ray {
 	transform-origin: 50% 50%;
 	animation: spin 9s linear infinite;
   }
   
-  .sunny-short-ray path {
+.sunny-short-ray path {
 	fill: $color-sun;
   }
   
-  .cloud-offset path {
+.cloud-offset path {
 	fill: #fff;
+	@include mix.respond(phones){
+		fill: #0a1e3f;
+	}
   }
   
-  .main-cloud path {
+.main-cloud path {
 	fill: $color-cloud;
   }
   
-  .small-cloud path {
+.small-cloud path {
 	fill: $color-cloud;
 	animation: flyby 6s linear infinite;
   }
   
-  .rain-cloud path {
+.rain-cloud path {
 	fill: $color-cloud;
 	animation: rain-cloud-color 6s ease infinite;
   }
   
-  .rain-drops path {
+.rain-drops path {
 	fill: $color-cloud;
 	opacity: 0;
   }
   
-  .rain-drops path:nth-child(1) {
+.rain-drops path:nth-child(1) {
 	animation: rain-drop 1.2s linear infinite;
   }
   
-  .rain-drops path:nth-child(2) {
+.rain-drops path:nth-child(2) {
 	animation: rain-drop 1.2s linear infinite 0.4s;
   }
   
-  .rain-drops path:nth-child(3) {
+.rain-drops path:nth-child(3) {
 	animation: rain-drop 1.2s linear infinite 0.8s;
   }
   
-  .snow-cloud path {
+.snow-cloud path {
 	fill: $color-snow-cloud;
   }
   
-  .snowflakes path {
+.snowflakes path {
 	transform-origin: 50% 50%;
 	fill: $color-snow-cloud;
 	opacity: 0;
   }
   
-  .snowflakes path:nth-child(1) {
+.snowflakes path:nth-child(1) {
 	animation: snow-drop 1.2s linear infinite;
   }
   
-  .snowflakes path:nth-child(2) {
+.snowflakes path:nth-child(2) {
 	animation: snow-drop 1.2s linear infinite 0.4s;
   }
   
-  .snowflakes path:nth-child(3) {
+.snowflakes path:nth-child(3) {
 	animation: snow-drop 1.2s linear infinite 0.8s;
   }
   
-  .wind-string path {
+.wind-string path {
 	stroke: $color-snow-cloud;
 	stroke-linecap: round;
 	stroke-width: 7px;
 	animation: wind-blow 3s linear infinite;
   }
   
-  .rainbows path {
+.rainbows path {
 	stroke-linecap: round;
 	animation: rainbow 4.5s linear infinite;
   }
   
-  .rainbows path:nth-child(1) {
+.rainbows path:nth-child(1) {
 	stroke: $color-rainbow-red;
 	stroke-width: 6px;
   }
   
-  .rainbows path:nth-child(2) {
+.rainbows path:nth-child(2) {
 	stroke: $color-rainbow-orange;
 	stroke-width: 8px;
   }
   
-  .rainbows path:nth-child(3) {
+.rainbows path:nth-child(3) {
 	stroke: $color-rainbow-yellow;
 	stroke-width: 6px;
   }
   
-  .rainbows path:nth-child(4) {
+.rainbows path:nth-child(4) {
 	stroke: $color-rainbow-green;
 	stroke-width: 14px;
   }
   
-  @keyframes spin {
+@keyframes spin {
 	100% {
 	  -webkit-transform: rotate(360deg);
 	  transform: rotate(360deg);
 	}
   }
   
-  @keyframes flyby {
+@keyframes flyby {
 	0% {
 	  -webkit-transform: translate(0px, 0px);
 	  transform: translate(0px, 0px);
@@ -165,7 +180,7 @@
 	}
   }
   
-  @keyframes rain-cloud-color {
+@keyframes rain-cloud-color {
 	100%,
 	0% {
 	  fill: $color-rain-cloud;
@@ -193,7 +208,7 @@
 	}
   }
   
-  @keyframes rain-drop {
+@keyframes rain-drop {
 	0% {
 	  -webkit-transform: translate(0px, -60px);
 	  transform: translate(0px, -60px);
@@ -216,7 +231,7 @@
 	}
   }
   
-  @keyframes snow-drop {
+@keyframes snow-drop {
 	0% {
 	  -webkit-transform: translate(0px, -60px) rotate(0deg);
 	  // transform: translate(0px, -60px) rotate(0deg);
@@ -239,7 +254,7 @@
 	}
   }
   
-  @keyframes wind-blow {
+@keyframes wind-blow {
 	0% {
 	  stroke-dasharray: 5 300;
 	  stroke-dashoffset: -200;
@@ -262,7 +277,7 @@
 	}
   }
   
-  @keyframes rainbow {
+@keyframes rainbow {
 	0% {
 	  stroke-dasharray: 10 210;
 	  stroke-dashoffset: 0;
@@ -283,4 +298,4 @@
 	  stroke-dashoffset: -210;
 	  opacity: 0;
 	}
-  }
+}

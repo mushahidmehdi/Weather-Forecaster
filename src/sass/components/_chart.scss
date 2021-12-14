@@ -1,25 +1,18 @@
-@import '../mixins';
+@use '../variables' as var;
+
 .chart {
 	display: flex;
 	align-items: center;
-	font-family: $Arimo;
+	font-family: var.$Arimo;
 	margin: 0 10px;
 
-	@include big-desktop {
+	@include var.respond(big-desktops) {
 		flex-direction: row;
 	}
-	@include desktop {
-		flex-direction: row;
-	}
-	@include tablet {
+	@include var.respond(laptops) {
 		flex-direction: column;
 	}
-	@include phone {
-		flex-direction: column;
-	}
-	@include small-phone {
-		flex-direction: column;
-	}
+	
 	&__linechart {
 		width:700px;
 		display: flex;
@@ -77,23 +70,52 @@
 			}
 		}
 	}
+	@include var.respond(laptops) {
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	@include var.respond(phones) {
+		flex-direction: column;
+		margin: 20px auto;
+		&__linechart {
+			margin-right: 0;
+			margin: 20px auto;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			color: var.$slate;
+			> h3 {
+				color: var.$lightest-slate;
+			}
+			&_y_axis {
+				color: wheat;
+			}
+		}
+		&__cart {
+			background-color: var.$light-navy;
+			margin: 20px auto;
+			box-shadow: 0px 2px 10px 4px rgba(0, 0, 0, 0.4);
+			> h1 {
+				color: var.$lightest-slate;
+			}
+			
+			> h2 {
+				color: var.$lightest-slate;
+			}
+			> p {
+				color: var.$greenish;
+			}
+			&__description {
+				> p {
+					color: var.$slate;
+				}
+			}
+		}
+	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .tooltip {
 	border-radius: 0.23em;

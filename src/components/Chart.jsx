@@ -13,9 +13,27 @@ import {
 		YAxis,
 		Tooltip, 
 		LineChart,
+		Text
 	} from 'recharts';
 
-	
+
+const CustomizedLabelTemp = () => {
+		return (
+			<Text
+				stroke='#ccd6f6'
+				strokeWidth= '0.8'
+				verticalAnchor = 'middle'
+				type='monotone'
+				x={0}
+				y={0}
+				dx={-220}
+				dy={8}
+				transform="rotate(-90)">            
+			Temprature in °C
+			</Text>
+		);
+	}
+
 const Chart = ( { props: { data, city_name} } ) => {
 	const [avgTemp, setAvgTemp] = useState();
 	const [cartdate, setCartdate] = useState();
@@ -63,8 +81,9 @@ const Chart = ( { props: { data, city_name} } ) => {
 
 						< XAxis dataKey='valid_date' axisLine={false} fontSize={12}
 						/>
+						
 
-						< YAxis dataKey='temp' tickLine={false} domain={[-7, 25]}   interval={1} axisLine={false}  tickCount={12} fontSize={14}
+						< YAxis className='chart__linechart_y_axis' dataKey='temp' tickLine={false} domain={[-7, 25]}   interval={1} axisLine={false}  tickCount={12} fontSize={14} label={<CustomizedLabelTemp />}
 						/>
 
 						<Legend layout="horizontal" verticalAlign="top" align="right"/>

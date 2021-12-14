@@ -33,14 +33,14 @@ const Cart = () => {
 				{ data && data !== null && data.length !== 0 ? < Chart props={data}/> : ( 
 					(data === null) ?
 					<div className="display__data__default">
+					<Animation/> 
 					<h1>No city is selected!</h1>
 					<p>Type any city name to get weekly forecast data</p>
-						<Animation/> 
 					</div> : 
-					<div className="display__data__default">
+					<div className="display__data__not_exits">
 					<h2>City doesn’t exist!</h2>
 					<p>Type a valid city name to get weekly forecast data</p>
-						<Animation/> 
+					<Animation/> 
 					</div>
 					)
 				 }

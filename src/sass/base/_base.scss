@@ -1,0 +1,26 @@
+@use '../variables' as var;
+
+*,
+::before,
+::after {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: inherit;
+}
+
+body {
+	font-family: var.$Arimo;
+	box-sizing: border-box;
+	text-align: center;
+
+	@include var.respond(tablets){
+		font-family: var.$Poppins;
+	}
+
+	@include var.respond(phones){
+		font-family: var.$Poppins;
+		background-color: #0a1e3f;
+		color: var.$greenish;
+	}
+}
+
