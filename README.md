@@ -19,19 +19,20 @@ After feching data from the endpoint in Redux by triggering action from reducer 
 
 ## Media Queries Big-Desktops, Laptops, and Phones
 
-#### Big Desktop 
+#### Big-Desktop 
 
 ![big-desktop view](https://user-images.githubusercontent.com/66418035/145979397-837fcf95-97ad-4b08-b31a-673cde14167f.PNG)
 
-#### Laptop or smaller desktop or tables in landscape mode.
+#### Laptop or Smaller desktops
 
 ![latop graph view](https://user-images.githubusercontent.com/66418035/145979623-52066aed-2552-4512-9338-c2d6a70b94ca.PNG)
 ![laptop cart view](https://user-images.githubusercontent.com/66418035/145979631-e4b965be-f8f2-48a0-92bc-8202532b50b1.PNG)
 
-
-#### Phone most Popular ones.
-![Home](https://user-images.githubusercontent.com/66418035/145981243-fdce0d04-918f-4784-83df-0af05957d1ee.PNG)
-
 #### Tablets
 ![Mobile](https://user-images.githubusercontent.com/66418035/145998377-cc5c6e1e-944b-4d55-8c3d-b1ea57fb3027.PNG)
+
+#### Phones
+![Home](https://user-images.githubusercontent.com/66418035/145981243-fdce0d04-918f-4784-83df-0af05957d1ee.PNG)
+
+
 
