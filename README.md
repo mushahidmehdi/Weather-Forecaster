@@ -30,6 +30,5 @@ After feching data from the endpoint in Redux by triggering action from reducer 
 
 
 #### Phone most Popular ones.
-![Home](https://user-images.githubusercontent.com/66418035/145981243-fdce0d04-918f-4784-83df-0af05957d1ee.PNG) 
-![graph](https://user-images.githubusercontent.com/66418035/145981254-9db275e0-3000-4d64-8d63-76fcea30ad7e.PNG)
+![Home](https://user-images.githubusercontent.com/66418035/145981243-fdce0d04-918f-4784-83df-0af05957d1ee.PNG) ![Mobile](https://user-images.githubusercontent.com/66418035/145998377-cc5c6e1e-944b-4d55-8c3d-b1ea57fb3027.PNG)
 
