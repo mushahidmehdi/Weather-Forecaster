@@ -24,7 +24,10 @@ After feching data from the endpoint in Redux by triggering action from reducer 
 ![big-desktop view](https://user-images.githubusercontent.com/66418035/145979397-837fcf95-97ad-4b08-b31a-673cde14167f.PNG)
 
 #### Phones
-![Home](https://user-images.githubusercontent.com/66418035/145981243-fdce0d04-918f-4784-83df-0af05957d1ee.PNG)
+
+<p align="center">
+ ![Home](https://user-images.githubusercontent.com/66418035/145981243-fdce0d04-918f-4784-83df-0af05957d1ee.PNG)
+</p>
 
 
 
