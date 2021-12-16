@@ -17,16 +17,14 @@
 
 After feching data from the endpoint in Redux by triggering action from reducer and storing it into the Store to make accessable all over the application without much props drilling. Each React component is functional base and react hooks are comming here as a really handy tool to work with the application by using DRY and KISS principles.
 
-## Media Queries Big-Desktops, Laptops, and Phones
-
-#### Big-Desktop 
-
-![big-desktop view](https://user-images.githubusercontent.com/66418035/145979397-837fcf95-97ad-4b08-b31a-673cde14167f.PNG)
-
-#### Phones
-
+<h3 align="center"> Big Desktop </h3>
 <p align="center">
- ![Home](https://user-images.githubusercontent.com/66418035/145981243-fdce0d04-918f-4784-83df-0af05957d1ee.PNG)
+ <img src="https://user-images.githubusercontent.com/66418035/145979397-837fcf95-97ad-4b08-b31a-673cde14167f.PNG" />  
+</p>
+ 
+<h3 align="center"> Small Decives </h3>
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/66418035/145981243-fdce0d04-918f-4784-83df-0af05957d1ee.PNG" />  
 </p>
 
 
